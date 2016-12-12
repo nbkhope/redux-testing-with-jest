@@ -24,12 +24,12 @@ function fetchTodosSuccess(body) {
 
 export function fetchTodos() {
   return dispatch => {
-    return axios.get(`${ROOT_URL}/todos`)
-      .then((todos) => {
-        return dispatch(fetchTodosSuccess(todos))
-      });
-    // return fetch(`${ROOT_URL}/todos`)
-    //   .then(res => res.json())
-    //   .then(json => dispatch(fetchTodosSuccess(json.body)));
+    // return axios.get(`${ROOT_URL}/todos`)
+    //   .then((todos) => {
+    //     return dispatch(fetchTodosSuccess(todos))
+    //   });
+    return fetch(`${ROOT_URL}/todos`)
+      .then(res => res.json())
+      .then(json => dispatch(fetchTodosSuccess(json.body)));
   };
 }
