@@ -35,5 +35,17 @@ describe('components', () => {
       expect(todoInputProps.newTodo).toBe(true)
       expect(todoInputProps.placeholder).toEqual('What needs to be done?');
     });
+
+    it('should call addTodo if length of text is greater than zero', () => {
+      const { enzymeWrapper, props } = setup();
+
+      const input = enzymeWrapper.find('TodoTextInput');
+
+      input.props().onSave('');
+      expect(props.addTodo.mock.calls.length).toBe(0);
+
+      input.props().onSave('Do the dishes');
+      expect(props.addTodo.mock.calls.length).toBe(1);
+    });
   });
 });
