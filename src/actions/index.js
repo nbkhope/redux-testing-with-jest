@@ -14,14 +14,18 @@ export function addTodo(text) {
   }
 }
 
+function fetchTodosSuccess(body) {
+  return {
+    type: FETCH_TODOS_SUCCESS,
+    body
+  };
+}
+
 export function fetchTodos() {
   return dispatch => {
     return axios.get(`${ROOT_URL}/todos`)
       .then((todos) => {
-        return dispatch({
-          type: FETCH_TODOS_SUCCESS,
-          body: todos
-        })
+        return dispatch(fetchTodosSuccess(todos))
       });
   };
 }
