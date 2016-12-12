@@ -13,11 +13,12 @@ const ROOT_URL = 'http://localhost:3090';
 
 describe('async actions', () => {
   afterEach(() => {
-    nock.cleanAll()
+    nock.cleanAll();
   });
 
   it('creates FETCH_TODOS_SUCCESS when fetching todos has been done', () => {
-    nock(ROOT_URL)
+    // issue: nock does not work with axios
+    nock(`${ROOT_URL}`)
       .get('/todos')
       .reply(200, { body: { todos: ['do something'] } })
       ;

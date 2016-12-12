@@ -1,4 +1,5 @@
 import axios from 'axios';
+import fetch from 'isomorphic-fetch';
 
 import {
   ADD_TODO,
@@ -27,5 +28,8 @@ export function fetchTodos() {
       .then((todos) => {
         return dispatch(fetchTodosSuccess(todos))
       });
+    // return fetch(`${ROOT_URL}/todos`)
+    //   .then(res => res.json())
+    //   .then(json => dispatch(fetchTodosSuccess(json.body)));
   };
 }
